@@ -1,0 +1,114 @@
+:root{
+  --violet-color: #7B68EE;
+  --pink-color: #a855d9;
+  --footer-color: #180d2b;
+  --hr-color: #fb79c4;
+  --contentBlock-color: #b074c7;
+  --dV-color: #770077;
+
+}
+
+
+.face {
+  position: relative;
+	width: 100px;
+	height: 150px;
+  top: 10px;
+  left:20px;
+	border-radius: 50px 50px 0 0;
+	border-top: 5px solid var(--dV-color);
+	border-left: 5px solid var(--dV-color);
+	border-right: 5px solid var(--dV-color);
+  background-color: var(--pink-color);
+
+}
+
+.buttonLoad {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	background-color: #520af6;
+	top: 18px;
+	left: 2px;
+	border-radius: 50%;
+	border: 5px  solid var(--dV-color);;
+}
+
+.buttonLoad:hover {
+	background-color: #ff0055;
+}
+
+
+.buttonLoad2 {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	background-color: #ff0055;
+  top: 18px;
+	left: 53px;
+	border-radius: 50%;
+	border: 5px  solid var(--dV-color);;
+}
+
+.buttonLoad2:hover {
+	background-color: #520af6;
+}
+
+
+
+.s1 {
+	position: absolute;
+	width: 10px;
+	height: 5px;
+	background-color: var(--dV-color);;
+	top: 40px;
+	left: 45px;
+
+}
+
+
+.mouth {
+	position: absolute;
+	width: 10px;
+	height: 15px;
+	top: 80px;
+	left: 20px;
+	border-radius: 50%;
+	border: 3px solid var(--dV-color);;
+
+}
+
+.snakeBody {
+	position: absolute;
+
+	width: 300px;
+	height: 200px;
+
+	top: 500px;
+	left: 900px;
+	border-radius: 200px 200px 0 0;
+	border-top: 20px solid black;
+	border-left: 20px solid black;
+	border-right: 20px solid black;
+}
+
+.tail {
+	position: absolute;
+	top: 620px;
+	left: 1300px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 50px 100px 50px;
+	border-color: transparent transparent black transparent;
+}
+
+.platform {
+	position: absolute;
+	top: 700px;
+	left: 120px;
+	width: 1300px;
+	height: 20px;
+	background-color: black;
+	border-radius:50px;
+}

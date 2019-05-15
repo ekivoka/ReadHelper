@@ -1,4 +1,11 @@
 <?php
+
+$page = $_GET['page'];
+//$level = $_GET['level'] ;
+
+
+$name = 'test.txt';
+
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 $level = $_POST['level'] ;
 $host = 'localhost'; // адрес сервера
@@ -109,7 +116,9 @@ function wrapTranslate($word, $level)
 
 
      if (($wordFrequency < $searchFrequency) && $translate != ''){
+
          $res .= 'on>';
+
      }else {
         $res .= 'off>';
      }
@@ -122,52 +131,44 @@ function wrapTranslate($word, $level)
 
     return $res;
 }
-//начало
-if ($_FILES){
+//$fh = fopen($name, 'r+');
+//$text = fread($fh, filesize($name));
 
-  $name = $_FILES['name']['name'];
+$text = file_get_contents('test.txt', FALSE, NULL, ($page-1)*1000, 1010);
 
-  //move_uploaded_file($_FILES['name']['tmp_name'], $name);
-  move_uploaded_file($_FILES['name']['tmp_name'], 'test.txt');
-  //$fh = fopen($name, 'r+');
-  //$text = fread($fh, filesize($name));
+$get  = mb_detect_encoding($text, array('utf-8','UTF-8','cp1251'));
+$text =  iconv($get,'UTF-8',$text);
 
-  $text = file_get_contents('test.txt', FALSE, NULL, (0)*1000, 1010);
+$result = '';
+$word = '';
+$level = $_GET['level'] ;
 
-  $get  = mb_detect_encoding($text, array('utf-8','UTF-8','cp1251'));
-  $text =  iconv($get,'UTF-8',$text);
+for ($i = 0; $i < strlen($text); $i++) {
+  if((ord($text[$i])>96 && ord($text[$i])<123)
+  ||(ord($text[$i])>64 && ord($text[$i])<90)
+  ||(ord($text[$i])== 45)
+  ||(ord($text[$i])== 39)){
+    $word .= $text[$i];
+  }else{
+    if ($word){
 
-  $result = '';
-  $word = '';
+      $result .= "<span class = ";
+      $result .= 'word>';
+      $result .= $word;
 
-  for ($i = 0; $i < strlen($text); $i++) {
-    if((ord($text[$i])>96 && ord($text[$i])<123)
-    ||(ord($text[$i])>64 && ord($text[$i])<90)
-    ||(ord($text[$i])== 45)
-    ||(ord($text[$i])== 39)){
-      $word .= $text[$i];
-    }else{
-      if ($word){
+      $level = 5;
 
-        $result .= "<span class = ";
-        $result .= 'word>';
-        $result .= $word;
-
-
-
-        $translate = wrapTranslate($word, $level); //оборачиваем перевод
-        $result .= $translate;
-		$result .= "</span>";
-        $word = '';
-        $result .= $text[$i];
-     } else {
-         $result .= $text[$i];
-      }
+      $translate = wrapTranslate($word, $level); //оборачиваем перевод
+      $result .= $translate;
+      $result .= "</span>";
+      $word = '';
+      $result .= $text[$i];
+   } else {
+       $result .= $text[$i];
     }
   }
-  //fclose($fh);
 }
 
-include "readerTemplate.html";
 
+echo $result;
 ?>

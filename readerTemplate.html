@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ReadHelper</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css\style.css">
+  <script src="js\script.js" async></script>
+</head>
+<body>
+<div class = "page">
+			<div class = "header">
+				<pre class = "PreLogo">READHELPER</pre>
+				<div class = "logo">
+				<div class = "logo-head">
+					<div class = "logo-eye1"></div>
+					<div class = "logo-eye2"></div>
+				</div>
+
+				</div>
+
+			</div>
+			<div class = "content">
+				<div class = "menu">
+          <div class = "level">
+            <pre class = "preMenuItem">Level:</pre>
+            <input name = "level" type = "range" min="1" max="10" step="1" value="5" class="slider">
+          </div>
+          <div class = "coloreModes">
+            <pre class = "preMenuItem">Color:</pre>
+          </div>
+          <div class = "lastWords">
+            <pre class = "preMenuItem">Word List:</pre>
+            <ul class = "wordList">
+            </ul>
+          </div>
+
+        </div>
+				<div class = "textArea">
+					<div class = "pageButton">
+              <div class = "pageSwitchLeft"></div>
+              <pre class = "pageNum">Page 1<?=$page;?></pre>
+              <div class = "pageSwitchRight"></div>
+          </div>
+					<div class = "text">
+					 <pre class = "t"><?=$result;?></pre>
+					</div>
+					<div class = "pageButton">
+            <div class = "pageSwitchLeft"></div>
+            <pre class = "pageNum">Page 1<?=$page;?></pre>
+            <div class = "pageSwitchRight"></div>
+          </div>
+				</div>
+			</div>
+			<div class = "footer">Readhelper!</div>
+		</div>
+  </body>
+  </html>

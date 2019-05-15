@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ReadHelper</title>
+	<title>ReadHelper</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="yandex-verification" content="9bfe658e01956568" />
+	<meta name="Description" content="Учись, читая тексты на английском в оригинале. ReadHelper переводит только незнакомые слова в соответствии с твоим уровнем и встраивает перевод прямо в текст."/>
+  <link rel="stylesheet" type="text/css" href="css\main.css">
+	<link rel="stylesheet" type="text/css" href="css\warm.css">
+	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+  <script src="js\script.js" async></script>
 </head>
 <body>
-  <form action = "handle.php" method = "post" enctype="multipart/form-data">
-    <input name = "name" type = "file"><br><br>
-    Level <input name = "level" type = "range" min="1" max="10" step="1" value="5"><br><br>
-    <input type = "submit" value = "отправить файл">
-  </form>
+	<div class = "page">
+		<div class = "header">
+			<span class = "logoText">ReadHelper</span>
+		</div>
+		<div class = "content">
+			<div class = "logoBlock contentBlock">
+				<div class = logoImg>
+					<div class = "face">
+						<div class = "buttonLoad"></div>
+						<div class = "buttonLoad2"></div>
+						<div class = "s1"></div>
+						<div class = "mouth"></div>
+						</div>
+				</div>
+				<div onclick = "sayHello()" class = "sayHelloButton"><div class = sayHello> Say HELLO </div><div class = sayHello> to the DEVELOPER! </div></div>
+			</div>
+			<div class = "loadBlock contentBlock">
+				<form action = "handle.php" method = "post" enctype="multipart/form-data">
+					<div class = "loadForm">
+
+						<div class = "textLoadForm">Just</div>
+						<label for="file" class ="textLoadForm textLoadButton" >load a file,</label>
+						<div class = "textLoadForm">choose level</div>
+						<input class = "slider" name = "level" type = "range" min="1" max="10" step="1" value="5">
+						<div class = "textLoadForm">and</div>
+						<input type = "submit" value = "read!" class ="textLoadForm textSendButton"/>
+						<input type="file" name="file" id="file" class="inputfile" />
+
+					</div>
+				</form>
+			</div>
+			<div class = "descriptionBlock contentBlock"></div>
+		</div>
+		<div class = "footer"></div>
+	</div>
 </body>
 </html>
