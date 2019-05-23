@@ -95,6 +95,22 @@ body {
 .descriptionBlock{
   border-radius: 80px 20px 80px 20px;
   margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content:center;
+}
+
+.description{
+  display: flex;
+  align-self: center;
+  color:black;
+  text-align: center;
+  color: white;
+  font-size:25px;
+  padding: 10px;
+  font-family: 'Comfortaa', cursive;
 }
 
 .loadBlock{

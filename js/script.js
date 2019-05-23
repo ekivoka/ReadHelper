@@ -4,7 +4,7 @@ var nextPage = document.getElementsByClassName('pageSwitchRight');
 var prevPage = document.getElementsByClassName('pageSwitchLeft');
 var pageNum = document.getElementsByClassName('pageNum'); //элемент номер страницы
 var pageNumber = 1; //текущая страница
-var level = 5; //уровень
+var level = document.getElementsByClassName('slider'); //уровень
 /*ajax*/
 var xhttp;
 if (window.XMLHttpRequest){
@@ -51,6 +51,12 @@ prevPage[0].onclick = function(event) {
 }
 prevPage[1].onclick = function(event) {
   decPage();
+}
+
+//изменение уровня на странице
+
+level[0].onchange = function(event) {
+  getTextPageAjax(pageNumber)
 }
 
 
@@ -112,7 +118,8 @@ function decPage(){
 
 //запросить и загрузить страничку
 function getTextPageAjax(pageNumber){
-  xhttp.open("GET","ajaxHandler.php?page=" + pageNumber + "&level=" +level,true);
+
+  xhttp.open("GET","ajaxHandler.php?page=" + pageNumber + "&level=" + (+level[0].value) ,true);
   xhttp.send();
   xhttp.onreadystatechange=function(){
    if (xhttp.readyState==4){

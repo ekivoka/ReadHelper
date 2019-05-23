@@ -1,13 +1,10 @@
 <?php
 
 $page = $_GET['page'];
-//$level = $_GET['level'] ;
-
-
 $name = 'test.txt';
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
-$level = $_POST['level'] ;
+//$level = $_POST['level'] ;
 $host = 'localhost'; // адрес сервера
 $database = 'test'; // имя базы данных
 $user = 'root'; // имя пользователя
@@ -141,7 +138,7 @@ $text =  iconv($get,'UTF-8',$text);
 
 $result = '';
 $word = '';
-$level = $_GET['level'] ;
+$level = $_GET['level'];
 
 for ($i = 0; $i < strlen($text); $i++) {
   if((ord($text[$i])>96 && ord($text[$i])<123)
@@ -155,8 +152,6 @@ for ($i = 0; $i < strlen($text); $i++) {
       $result .= "<span class = ";
       $result .= 'word>';
       $result .= $word;
-
-      $level = 5;
 
       $translate = wrapTranslate($word, $level); //оборачиваем перевод
       $result .= $translate;
