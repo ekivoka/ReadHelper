@@ -3,8 +3,10 @@
 $page = $_GET['page'];
 $name = 'test.txt';
 
+
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 //$level = $_POST['level'] ;
+
 $host = 'localhost'; // адрес сервера
 $database = 'test'; // имя базы данных
 $user = 'root'; // имя пользователя
@@ -15,8 +17,16 @@ $link = mysqli_connect($host, $user, $password, $database)
 
 
 
-    function lemmatization($word)
-    {
+function addPageDB($page, $cookie){
+    
+    $query = "UPDATE sessions SET lastPage='$page' WHERE cookie='$cookie';";
+    global $link;
+    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+        
+}
+
+
+function lemmatization($word){
        //return $word;
       require_once( 'phpmorphy/src/common.php');
 
@@ -52,7 +62,7 @@ $link = mysqli_connect($host, $user, $password, $database)
 
       return $w[0];
     //  return $word;
-    }
+ }
 
 
 function findWordFrequency($word)
@@ -131,7 +141,13 @@ function wrapTranslate($word, $level)
 //$fh = fopen($name, 'r+');
 //$text = fread($fh, filesize($name));
 
-$text = file_get_contents('test.txt', FALSE, NULL, ($page-1)*1000, 1010);
+//-----------------------------------------//
+//-----------------------------------------//
+$cookie = $_COOKIE['cookie'];
+addPageDB($page, $cookie);
+
+$bookname = 'books/'.$cookie.'.txt';
+$text = file_get_contents($bookname, FALSE, NULL, ($page-1)*1000, 1010);
 
 $get  = mb_detect_encoding($text, array('utf-8','UTF-8','cp1251'));
 $text =  iconv($get,'UTF-8',$text);
